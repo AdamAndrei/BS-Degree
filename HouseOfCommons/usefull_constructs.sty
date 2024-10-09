@@ -1,0 +1,260 @@
+%============================================
+% Common packages:
+%============================================
+\usepackage{incgraph}
+\usepackage{tkz-tab}
+\usepackage[most]{tcolorbox}
+\usepackage{amsmath,amsfonts,amsthm,mathrsfs, amssymb}
+\usepackage{svg}
+\usepackage{halloweenmath}
+\definecolor{leg}{HTML}{FFF47B}
+
+%============================================
+% First page:
+%============================================
+\newcommand{\myPage}[5]
+{
+\pagecolor{leg}
+\vspace{2cm}
+\thispagestyle{empty}
+\begin{center}
+		\begin{tcolorbox}[enhanced,colback=white,width = 10cm,colframe=white!40!black,fonttitle=\bfseries,
+						drop lifted shadow,title = {#1},boxrule=1mm,arc = 2mm,
+						attach boxed title to bottom center={yshift=3mm}]
+\centering
+\scalebox{2}{\textbf{\texttt{ Topology highlights }}}
+		\end{tcolorbox}
+\vspace{1cm}
+\textbf{\LARGE{Adam Andrei}} \par
+\vspace{1cm}    	
+\textbf{\Large #2, 2024} \par
+\vspace{1cm}
+\begin{tcolorbox}[enhanced,colback=white,hbox,colframe=white!40!black,fonttitle=\bfseries,
+						drop lifted shadow,boxrule=1mm,arc = 2mm]
+\centering
+\scalebox{2}{\textbf{\texttt{#3}}}
+		\end{tcolorbox}
+\vspace{0.5cm}
+%\includegraphics[width = 12cm]{C:/Topology/UsefulConstructs/common_images/icon.svg} \par
+\includesvg[width = #4cm]{#5} \par
+\vfill
+\textbf{\Large Department of Mathematics \vfill at \vfill Adam's Free Time University}
+\end{center}
+\newpage
+}
+
+%============================================
+% Useful commands:
+%============================================
+% plain box:
+\newcommand{\plainBox}[1]
+{
+\begin{tcolorbox}[colback=gray!20!white,
+colframe=black,boxrule=1mm,arc = 2mm,fonttitle=\bfseries,
+colbacktitle=black!50!white,enhanced,
+attach boxed title to top center={yshift=-2mm}]
+#1
+\end{tcolorbox}
+}
+
+%centered plain box
+\newcommand{\centeredPlainBox}[1]
+{
+\begin{tcolorbox}[colback=gray!20!white,
+colframe=black,boxrule=1mm,arc = 2mm,fonttitle=\bfseries,
+colbacktitle=black!50!white,enhanced,
+attach boxed title to top center={yshift=-2mm}, hbox]
+\centering
+#1
+\end{tcolorbox}
+}
+
+% titled box:
+\newcommand{\titledBox}[2]
+{
+\begin{tcolorbox}[colback=gray!20!white,
+colframe=black,boxrule=1mm,arc = 2mm,fonttitle=\bfseries,
+colbacktitle=red,enhanced,
+attach boxed title to top center={yshift=-2mm},
+title={#1}]
+#2
+\end{tcolorbox}
+}
+
+%calligraphic
+\newcommand{\cg}[1]
+{
+\mathcal{#1}
+}
+
+%forall exists
+\newcommand{\fe}[1]
+{
+\left(#1\right)\;
+}
+
+% images path
+\newcommand{\imagePaths}[1]
+{
+\graphicspath{{#1}{{C:/Topology/UsefulConstructs/common_images/}}}
+}
+
+% the necessity
+\newcommand{\necessity}
+{
+\tcbox[on line,size=fbox]{$\Rightarrow$}
+}
+
+% the sufficiency
+\newcommand{\sufficiency}
+{
+\tcbox[on line,size=fbox]{$\Leftarrow$}
+}
+
+% Definition, Theorem, Remark, ...
+
+% Definition
+
+\newcommand{\mtd}[2]
+{
+	\begin{tcolorbox}[	enhanced,colback=white,width = 16cm,
+						colframe=white!40!black,fonttitle=\bfseries,
+						drop lifted shadow,title = {Definition},boxrule=1mm,arc = 2mm,
+						attach boxed title to top left={xshift=3mm, yshift=-3mm}
+					]
+	\begin{tcolorbox}[	enhanced,colback=white!50!black,width = 15cm,
+						colframe=black%, grow to left by=1cm%
+					]
+	\begin{center}
+	#1
+	\end{center}
+	\end{tcolorbox}
+						
+
+#2
+		\end{tcolorbox}
+\vspace*{0.3cm}
+}
+
+\newcommand{\md}[1]
+{
+	\begin{tcolorbox}[	enhanced,colback=white,width = 16cm,
+						colframe=white!40!black,fonttitle=\bfseries,
+						drop lifted shadow,title = {Definition},boxrule=1mm,arc = 2mm,
+						attach boxed title to top left={xshift=3mm, yshift=-3mm}
+					]
+#1
+		\end{tcolorbox}
+\vspace*{0.3cm}
+}
+
+
+% Theorem
+
+\newcommand{\mtth}[2]
+{
+	\begin{tcolorbox}[	enhanced,colback=purple!60!yellow,width = 16cm,
+						colframe=blue!40!black,fonttitle=\bfseries,
+						drop lifted shadow,title = {Theorem},boxrule=2mm,arc = 2mm,
+						attach boxed title to top left={xshift=3mm, yshift=-3mm},colbacktitle=red
+					]
+	\begin{tcolorbox}[	enhanced,colback=red!50!green,width = 14.8cm,
+						colframe=purple!90!black
+					]
+	\begin{center}
+	#1
+	\end{center}
+	\end{tcolorbox}
+						
+
+#2
+		\end{tcolorbox}
+\vspace*{0.3cm}
+}
+
+\newcommand{\mth}[1]
+{
+	\begin{tcolorbox}[	enhanced,colback=purple!60!yellow,width = 16cm,
+						colframe=blue!40!black,fonttitle=\bfseries,
+						drop lifted shadow,title = {Theorem},boxrule=2mm,arc = 2mm,
+						attach boxed title to top left={xshift=3mm, yshift=-3mm},colbacktitle=red
+					]
+#1
+		\end{tcolorbox}
+\vspace*{0.3cm}
+}
+
+
+% Remark
+
+\newcommand{\mtr}[2]
+{
+	\begin{tcolorbox}[	enhanced,colback=white,width = 16cm,
+						colframe=blue!20!gray,fonttitle=\bfseries,
+						drop lifted shadow,title = {Remark},boxrule=0.5mm,arc = 2mm,
+						attach boxed title to top left={xshift=3mm, yshift=-3mm},colbacktitle=blue
+					]
+	\begin{tcolorbox}[	enhanced,colback=blue!30!white,width = 15cm,
+						colframe=black
+					]
+	\begin{center}
+	#1
+	\end{center}
+	\end{tcolorbox}
+						
+
+#2
+		\end{tcolorbox}
+\vspace*{0.3cm}
+}
+
+\newcommand{\mr}[1]
+{
+	\begin{tcolorbox}[	enhanced,colback=white,width = 16cm,
+						colframe=blue!20!gray,fonttitle=\bfseries,
+						drop lifted shadow,title = {Remark},boxrule=0.5mm,arc = 2mm,
+						attach boxed title to top left={xshift=3mm, yshift=-3mm},colbacktitle=blue,
+						%before upper={\parindent15pt}
+					]
+#1
+		\end{tcolorbox}
+\vspace*{0.3cm}
+}
+
+\newcommand{\me}[1]
+{
+	\begin{tcolorbox}[	enhanced,colback=white!60!red,width = 16cm,
+						colframe=purple,fonttitle=\bfseries,
+						drop lifted shadow,title = {Example},boxrule=1mm,arc = 2mm,
+						attach boxed title to top left={xshift=3mm, yshift=-3mm},colbacktitle=brown,
+						%before upper={\parindent15pt}
+					]
+#1
+		\end{tcolorbox}
+\vspace*{0.3cm}
+}
+
+\newcommand{\mset}[2]
+{
+\left\lbrace\, #1 \mid #2 \, \right\rbrace
+}
+
+\newcommand{\te}[1]
+{
+\text{#1}
+}
+
+%============================================
+% Global settings:
+%============================================
+
+
+%============================================
+% Environments:
+%============================================
+
+% proof
+\tcolorboxenvironment{proof}{% `proof' from `amsthm'
+blanker,breakable,left=5mm,
+before skip=10pt,after skip=10pt,
+borderline west={1mm}{0pt}{red}}

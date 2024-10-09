@@ -1,0 +1,75 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{xcolor}
+\usepackage{import}
+\usepackage{C:/ForSaving/Math/Licenta/content/HouseOfCommons/usefull_constructs}
+\imagePaths{C:/ForSaving/Math/Licenta/content/BuildingBlocks/GeneralTopology/1-TopologicalSpaces/images/}
+
+\definecolor{leg}{HTML}{FFF47B}
+\renewcommand\qedsymbol{$\scalebox{3}{$\mathrightbat$}$}
+
+\begin{document}
+\myPage{1}{May}{Closure Operator}{16}{C:/ForSaving/Math/Licenta/content/BuildingBlocks/GeneralTopology/1-TopologicalSpaces/images/closureOp}
+\newpage
+
+\md{
+\quad A \textbf{closure operator} on the set $X$ is an operator which assigns to each subset \textit{A} of $X$ a subset $\mathit{A^c}$ such that the following four statements, the \textbf{Kuratowski closure axioms}, are true : 
+\begin{flalign*}
+\qquad\left(K1\right)\quad & \emptyset^c = \emptyset &\\
+\qquad\left(K2\right)\quad & \forall A, A \subseteq A^c &\\
+\qquad\left(K3\right)\quad & \forall A, A^{cc} = A^c &\\
+\qquad\left(K4\right)\quad & \forall A \text{ and } B, \left(A\cup B\right)^c = A^c \cup B^c &
+\end{flalign*}
+}
+
+\mth
+{
+\quad Let \textit{c} be a closure operator on \textit{X}, let $\mathcal{F}$ be the family of all subsets \textit{A} of \textit{X} for which $A^c = A$ $\left(\emph{i.e. } \mathcal{F} = \left\lbrace A \subseteq X \; | \; A^c = A\right\rbrace = \text{ fixed points of \textit{c} } \right)$, and let $\mathcal{T}$ be the family of complements of members of $\mathcal{F}$. Then $\mathcal{T}^c$ is a topology on $X$, and $A^c$ is the $\mathcal{T}^c$-closure  of $A$ for each subset $A$ of $X$.
+}
+
+\begin{proof}
+By $(K1)$ we know $\emptyset \in \mathcal{F}$. \\
+By taking $A = X$ in $(K2)$ we have $X \subseteq X^c$, but $X^c \subseteq X \Rightarrow X^c = X$ \\
+$ \Rightarrow X \in \mathcal{F}$, so $\emptyset$ and $X$ are elements of $\mathcal{T}^c$. \\
+
+\quad Let $(G_i)_{i \in I} \subseteq \mathcal{T}^c \Rightarrow (\forall) i \in I (\exists) F_i \in \mathcal{F} \text{ such that } G_i = X \setminus F_i$ \\ 
+$\Rightarrow \displaystyle\bigcup_{i \in I} G_i = \bigcup_{i \in I} \left(X \setminus F_i\right) = X\setminus \bigcap_{i \in I} F_i$.\\
+$\forall A\subseteq B\subseteq X: B = (B\setminus A) \cup A \Rightarrow B^c = (B \setminus A)^c \cup A^c \Rightarrow A^c \subseteq B^c \\ \forall i \in I: \displaystyle\bigcap_{j\in I} F_j \subseteq F_i \Rightarrow \left(\bigcap_{j \in I} F_j\right)^c \subseteq F_i^c \Rightarrow \forall i \in I: \left(\bigcap_{j \in I} F_j\right)^c \subseteq F_i \\ \Rightarrow \displaystyle\left(\bigcap_{i \in I} F_i\right)^c \subseteq \bigcap_{i\in I} F_i \overset{\text{ by } (K2)}{\Rightarrow} \left(\bigcap_{i \in I} F_i\right)^c = \bigcap_{i\in I} F_i \Rightarrow \bigcap_{i\in I} F_i \in \mathcal{F} \\ \Rightarrow X\setminus \bigcap_{i \in I} F_i \in \mathcal{T}^c \Rightarrow \bigcup_{i\in I}G_i \in \mathcal{T}^c$\\
+Let $A,B \in \mathcal{T}^c \Rightarrow (\exists) A',B' \in \mathcal{F}$ such that $A = X\setminus A'$ and $B = X \setminus B'$ \\
+$\Rightarrow A \cap B = X\setminus A' \cap X \setminus B' = X \setminus \left(A' \cup B'\right)$ \\
+$(A' \cup B')^c \overset{\text{ by } (k4)}{=} A'^c \cup B'^c \overset{A',B' \in \mathcal{F}}{=} A' \cup B' \Rightarrow A' \cup B' \in \mathcal{F} \\ \Rightarrow X \setminus \left(A'\cup B'\right) \in \mathcal{T}^c \Rightarrow A\cap B \in \mathcal{T}^c \Rightarrow \mathcal{T}^c $ is a topology on $X$.\\
+\quad We now show that $\overline{A} = A^c \: \forall A \subseteq X$.\\
+Let $\mathcal{F}_A = \left\lbrace F\in \mathcal{F} \;|\; A \subseteq F\right\rbrace$, then $\overline{A} = \bigcap \mathcal{F}_A$. \\
+For each $F\in \mathcal{F}_A: A \subseteq F \Rightarrow A^c \subseteq F^c \overset{ F\in \mathcal{F}}{\Rightarrow} A^c \subseteq F \\ \Rightarrow A^c \subseteq \displaystyle\bigcap \mathcal{F}_A \Rightarrow A^c \subseteq \overline{A}$. \\
+Because $\overline{A}$ is a $\mathcal{T}$-close set, then $\overline{A} \in \mathcal{F} \Rightarrow \overline{A}^c = \overline{A}.$We know $A \subseteq \overline{A} \Rightarrow A^c \subseteq \overline{A}^c \Rightarrow A^c \subseteq \overline{A}$ \\
+$A^c \in \mathcal{F} \Rightarrow A^c$ is a $\mathcal{T}$-close set and $A\subseteq A^c \Rightarrow \overline{A} \subseteq A^c \Rightarrow A^c = \overline{A}$.
+ 
+\end{proof}
+
+
+\md
+{
+\quad Let $\mathcal{C} = \{c: \mathcal{P}(X) \to \mathcal{P}(X) \;|\; c \text{ is a closure operator } \}$ be the set of all closure operators, \[ \mathcal{CL}: \mathcal{C} \to Top(X),\: c \overset{\mathcal{CL}}{\longrightarrow} \mathcal{T}^c \] the operator assigning to each closure operator the generated topology, and \[ \mathcal{T}-cl: \mathcal{P}(X) \to \mathcal{P}(X), \: A \overset{\mathcal{T}-cl}{\longrightarrow} \overline{A}^{\mathcal{T}}\] for each $\mathcal{T} \in Top(X).$
+}
+
+\mth
+{
+\quad $\mathcal{CL}$ is a bijective operator and \[\mathcal{CL}^{-1}: Top(X)\to \mathcal{C}, \: \mathcal{T} \overset{\mathcal{CL}^{-1}}{\longrightarrow} \mathcal{T}-cl\]
+}
+
+\begin{proof}
+Firstly we show that $\mathcal{CL}^{-1}$ is well defined.\\
+Let $\mathcal{T}\in Top(X)$, then we have:\\
+\begin{flalign*}
+\qquad\left(K1\right)\quad & \overline{\emptyset}^{\mathcal{T}} = \emptyset &\\
+\qquad\left(K2\right)\quad & \forall A,\overline{A}^{\mathcal{T}} = \displaystyle\bigcap\{F \subseteq X \;|\; A\subseteq F,\, F \text{ is  } \mathcal{T}\text{ - close}\}  \Rightarrow  A \subseteq \overline{A}^{\mathcal{T}} &\\
+\qquad\left(K3\right)\quad & \forall A,  \overline{\left(\overline{A}^{\mathcal{T}}\right)}^{\mathcal{T}} = \overline{A}^{\mathcal{T}} &
+\end{flalign*}
+$(K4)$ Let $A,B\subseteq X: A\subseteq A\bigcup B, B\subseteq A\bigcup B \Rightarrow \overline{A}^{\mathcal{T}} \subseteq \overline{A\bigcup B}^{\mathcal{T}} \text{ and } \\ \overline{B}^{\mathcal{T}} \subseteq \overline{A\bigcup B}^{\mathcal{T}} \Rightarrow \overline{A}^{\mathcal{T}} \bigcup \overline{B}^{\mathcal{T}} \subseteq \overline{A\bigcup B}^{\mathcal{T}}$\\
+$A\subseteq \overline{A}^{\mathcal{T}}$ and $B\subseteq \overline{B}^{\mathcal{T}} \Rightarrow A\bigcup B \subseteq \overline{A}^{\mathcal{T}}\bigcup \overline{B}^{\mathcal{T}} \\ \Rightarrow \overline{A\bigcup B}^{\mathcal{T}} \subseteq \overline{\overline{A}^{\mathcal{T}}\bigcup \overline{B}^{\mathcal{T}}}^{\mathcal{T}} = \overline{A}^{\mathcal{T}}\bigcup \overline{B}^{\mathcal{T}} \Rightarrow \overline{A\bigcup B}^{\mathcal{T}} = \overline{A}^{\mathcal{T}} \bigcup \overline{B}^{\mathcal{T}}$ \\
+$\Rightarrow \mathcal{T}-cl $ is a closure operator, $i.e.\; \mathcal{T}-cl \in \mathcal{C}.$\\
+Let $c\in\mathcal{C} \Rightarrow \mathcal{CL}(c) = \mathcal{T}^c.$ Suppose there exists another topology\\ $\mathcal{T}\in Top(X)$ such that $\mathcal{CL}(c) = \mathcal{T} \Rightarrow \mathcal{T} - cl = c \Rightarrow \mathcal{T} = \mathcal{T}^c$(injective)\\
+Because $(\forall) \; \mathcal{T}\in Top(X) (\exists) \mathcal{T}-cl \in \mathcal{C}$ such that $\mathcal{CL}(\mathcal{T}-cl) = \mathcal{T}$(onto)\\
+$\Rightarrow \mathcal{CL}$ is a bijective operator.
+\end{proof}
+
+\end{document}

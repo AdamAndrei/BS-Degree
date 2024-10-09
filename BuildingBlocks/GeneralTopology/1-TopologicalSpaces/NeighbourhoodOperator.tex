@@ -1,0 +1,118 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{xcolor}
+\usepackage{import}
+\usepackage{C:/ForSaving/Math/Licenta/content/HouseOfCommons/usefull_constructs}
+\imagePaths{C:/ForSaving/Math/Licenta/content/BuildingBlocks/GeneralTopology/1-TopologicalSpaces/images/}
+
+\definecolor{leg}{HTML}{FFF47B}
+\renewcommand\qedsymbol{$\scalebox{3}{$\mathrightbat$}$}
+\newcommand{\nbh}[1]
+{
+\cg{V}\left(#1\right)
+}
+
+\newcommand{\nbhb}[1]
+{
+\cg{U}\left(#1\right)
+}
+
+\begin{document}
+\myPage{3}{May}{Neighbourhood Function}{8}{C:/ForSaving/Math/Licenta/content/BuildingBlocks/GeneralTopology/1-TopologicalSpaces/images/neighbourhood}
+\newpage
+
+\md
+{
+\quad Let $X$ be an non-empty set and $A \subseteq X$ be any subset of $X$. The set \[\mathcal{S}_A = \{S\subseteq X\;|\; A\subseteq S\} \] is called the \textbf{supra set} of $A$ and consists of all the subsets of $X$ containing $A$.
+
+}
+
+\md{
+\quad A function $\mathcal{V} : X\to \mathcal{P}(\mathcal{P}(X))$ is said to be a \textbf{neighbourhood function} on $X$ if it satisfies, for each $x\in X$, the following conditions:
+\begin{flalign*}
+\qquad\left(NF1\right)\quad & \mathcal{V}(x) \neq \emptyset &\\
+\qquad\left(NF2\right)\quad & \left(\forall\right)\; V \in \mathcal{V}(x): x\in V &\\
+\qquad\left(NF3\right)\quad & \left( \forall\right) \; V \in \mathcal{V}(x): \mathcal{S}_V \subseteq \mathcal{V}(x) &\\
+\qquad\left(NF4\right)\quad & \left( \forall\right) \; n\in\mathbb{N} \text{ and any } V_1,V2,\dots,V_n \in\mathcal{V}(x): \displaystyle\bigcap_{i = 1}^n V_i \in \mathcal{V}(x) & \\
+\qquad \left(NF5\right)\quad &  \left( \forall\right) \; V\in\mathcal{V}(x) \; \left( \exists\right) \; V'\in\mathcal{V}(x) \text{ such that } V\in \mathcal{V}(y),\: \left( \forall\right) \; y \in V' &
+\end{flalign*}
+}
+
+\md{
+\quad A function $\mathcal{U} : X\to \mathcal{P}(\mathcal{P}(X))$ is said to be a \textbf{neighbourhood basis function} on $X$ if it satisfies, for each $x\in X$, the following conditions:
+\begin{flalign*}
+\qquad\left(NBF1\right)\quad & \mathcal{U}(x) \neq \emptyset &\\
+\qquad\left(NBF2\right)\quad & \fe{\forall} U \in \mathcal{U}(x): x\in U &\\
+\qquad\left(NBF3\right)\quad & \fe{\forall} U_1,U_2 \in \cg{U}(x) \fe{\exists} U\in\cg{U}(x): U\subseteq U_1\bigcap U_2 &\\
+\qquad\left(NBF4\right)\quad & \fe{\forall} U\in\cg{U}(x) \fe{\exists} U' \in\cg{U}(x) \text{ having the following property: }& \\
+& \qquad\fe{\forall} y \in U' \fe{\exists} U''\in\cg{U}(y): U''\subseteq U  &
+\end{flalign*}
+}
+
+\mth
+{
+\quad Let $\cg{U}:X\to \cg{P}(\cg{P}(X))$. The function $\cg{V}:X\to\cg{P}(\cg{P}(X))$, defined by 
+\[ \cg{V}(x) := \{ V\in\cg{P}(X)\;|\; \fe{\exists} U \in \cg{U}(x): U\subseteq V \} = \bigcup_{U \in \cg{U}(x)} \cg{S}_U \] is a neighbourhood function on $X$ if and only if $\cg{U}$ is a neighbourhood basis function.
+}
+
+\begin{proof}
+\necessity\\
+Let $x\in X$ be any point in $X$.
+
+\begin{center}
+$\left(NBF1\right)$
+\end{center}
+By $\left(NF1\right): \nbh{x} \neq \emptyset \Rightarrow \fe{\exists} V \in \nbh{x} \Rightarrow \underbrace{\fe{\exists} U\in\nbhb{x}}_{\Rightarrow\; \nbhb{x} \neq \emptyset}: U\subseteq V.$ 
+
+\begin{center}
+$\left(NBF2\right)$
+\end{center}
+
+Let $U\in\nbhb{x} \overset{U\;\subseteq\; U}{\Rightarrow} U\in \nbh{x} \overset{\left(NF2\right)}{\Rightarrow} x\in U.$
+
+\begin{center}
+$\left(NBF3\right)$
+\end{center}
+
+Let $U_1,U_2 \in \nbhb{x} \overset{U_1\subseteq U_1,U_2\subseteq U_2}{\Rightarrow} U_1,U_2\in\nbh{x} \overset{\left(NF4\right)}{\Rightarrow} U_1 \bigcap U_2 \in \nbh{x} \Rightarrow \\ \Rightarrow \fe{\exists} U\in \nbhb{x}: U \subseteq U_1\bigcap	U_2.$
+
+\begin{center}
+$\left(NBF4\right)$
+\end{center}
+
+Let $U\in\nbhb{x} \overset{U\subseteq U}{\Rightarrow} U\in\nbh{x} \overset{\left(NF5\right)}{\Rightarrow} \\ \Rightarrow \fe{\exists} \underbrace{U_1 \in \nbh{x}}_{\Rightarrow \fe{\exists} U' \in\nbhb{x}: U' \subseteq U_1 }: \underbrace{U \in \nbh{y}}_{\Rightarrow \fe{\exists} U'' \in\nbhb{y}: U''\subseteq U}  \fe{\forall} y \in U_1 \Rightarrow \\ \Rightarrow \fe{\exists} U'\in\nbhb{x}: \fe{\forall} y \in U': \fe{\exists} U'' \in\nbhb{y} $ such that $U''\subseteq U.$
+
+\end{proof}
+
+\begin{proof}
+\sufficiency
+
+Let $x\in X$ be any point in $X$.
+
+\begin{center}
+$\left(NF1\right)$s
+\end{center}
+By $\left(NBF1\right): \nbhb{x} \neq \emptyset \Rightarrow \fe{\exists} U \in \nbhb{x} \overset{U\subseteq U}{\Rightarrow} U\in\nbh{x} \Rightarrow \nbh{x} \neq \emptyset.$
+
+\begin{center}
+$\left(NF2\right)$
+\end{center}
+
+Let $V\in \nbh{x} \Rightarrow \fe{\exists} U \in \nbhb{x}: U\subseteq V \overset{\left(NBF2\right)}{\Rightarrow} x\in U\subseteq V \Rightarrow x\in V. $
+
+\begin{center}
+$\left(NF3\right)$
+\end{center}
+
+Let $V\in \nbh{x} $ and $V'\in \cg{S}_V.$ Then $\fe{\exists} U\in\nbhb{x}: U\subseteq V \overset{V\subseteq V'}{\Rightarrow} \\ \Rightarrow \fe{\exists} U\in\nbhb{x}: U\subseteq V' \Rightarrow V'\in\nbh{x}.$
+
+\begin{center}
+$\left(NF4\right)$
+\end{center}
+
+Let $V_1,V_2 \in \nbh{x} \Rightarrow \fe{\exists} U_1,U_2 \in \nbhb{x}: U_1 \subseteq V_1 \;\land \; U_2\subseteq V_2 \\ \Rightarrow U_1\bigcap U_2\subseteq V_1\bigcap V_2.$ By $\left(NBF3\right) \fe{\exists} U\in\nbhb{x}: U\subseteq U_1\bigcap U_2 \Rightarrow \\ \Rightarrow \fe{\exists} U \in\nbhb{x}: U\subseteq V_1\bigcap V_2 \Rightarrow V_1\bigcap V_2 \in\nbh{x}.$\\
+Using induction, now we have that $\fe{\forall} n\in\mathbb{N} \fe{\forall} V_1,V_2,\dots ,V_n \in \nbh{x}:  $
+
+\end{proof}
+
+
+\end{document}

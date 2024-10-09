@@ -1,0 +1,86 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{xcolor}
+\usepackage{import}
+\usepackage{C:/ForSaving/Math/Licenta/content/HouseOfCommons/usefull_constructs}
+\imagePaths{C:/ForSaving/Math/Licenta/content/BuildingBlocks/GeneralTopology/1-TopologicalSpaces/images/}
+
+\definecolor{leg}{HTML}{FFF47B}
+\renewcommand\qedsymbol{$\scalebox{3}{$\mathrightbat$}$}
+
+\begin{document}
+\myPage{2}{May}{Interior Operator}{16}{C:/ForSaving/Math/Licenta/content/BuildingBlocks/GeneralTopology/1-TopologicalSpaces/images/openOp}
+\newpage
+
+\md{
+\quad An \textbf{interior operator} on the set $X$ is an operator which assigns to each subset \textit{A} of $X$ a subset $\mathit{A^i}$ such that the following four statements are true : 
+\begin{flalign*}
+\qquad\left(IO1\right)\quad & X^i = X &\\
+\qquad\left(IO2\right)\quad & \forall A, A^i \subseteq A &\\
+\qquad\left(IO3\right)\quad & \forall A, A^{ii} = A^i &\\
+\qquad\left(IO4\right)\quad & \forall A \text{ and } B, \left(A\cap B\right)^i = A^i \cap B^i &
+\end{flalign*}
+}
+
+\mth
+{
+\quad Let \textit{i} be an interior operator on \textit{X}, let $\mathcal{T}$ be the family of all subsets \textit{A} of \textit{X} for which $A^i = A$ $\left(\emph{i.e. } \mathcal{T} = \left\lbrace A \subseteq X \; | \; A^i = A\right\rbrace = \text{ fixed points of \textit{i} } \right)$. Then $\mathcal{T}$ is a topology on $X$, and $A^i$ is the $\mathcal{T}-int$  of $A$ for each subset $A$ of $X$.
+}
+
+\begin{proof}
+By $(IO1)$ we know that $X\in\mathcal{T}$. By taking $A = \emptyset$ in $(IO2) \\ \Rightarrow \emptyset^i \subseteq \emptyset \Rightarrow \emptyset^i = \emptyset \Rightarrow \emptyset \in \mathcal{T}$.\\
+
+Let $A\subseteq B \subseteq X \Rightarrow A = A \cap B \Rightarrow A^i = \left(A\cap B\right)^i \overset{\text{ by } (K4)}{\Rightarrow} A^i = A^i \cap B^i \\ \Rightarrow A^i \subseteq B^i.$\\
+
+Let $G = \left(G_j\right)_{j\in J} \subseteq \mathcal{T}.$ For each $k \in J: G_k \subseteq \displaystyle\bigcup_{j\in J} G_j \Rightarrow G_k^i \subseteq \left(\bigcup_{j \in J} G_j \right)^i \\ \Rightarrow \displaystyle\bigcup_{k \in J} G_k^i \subseteq \left(\bigcup_{j\in J}G_j\right)^i \overset{G_k \in \mathcal{T}}{\Rightarrow} \displaystyle\bigcup_{k \in J} G_k \subseteq \left(\bigcup_{j\in J}G_j\right)^i \overset{(IO2)}{\subseteq} \bigcup_{j\in J}G_j$\\
+$\Rightarrow \displaystyle\bigcup_{j\in J}G_j \in \mathcal{T}.$\\
+
+Let $A,B\in\mathcal{T} \overset{(IO4)}{\Rightarrow} \left(A\bigcap B\right)^i =  A^i \bigcap B^i \overset{A,B \in \mathcal{T}}{\Rightarrow} \left(A \bigcap B\right)^i = A\bigcap B \\ \Rightarrow A\bigcap B \in \mathcal{T}$\\
+
+So $\mathcal{T}$ is a topology on the set X.\\
+
+Now let $A\subseteq X$ be any set. By $(IO3) \left(A^i\right)^i = A^i \Rightarrow A^i \in\mathcal{T}.$\\
+$A^i \subseteq A \Rightarrow \mathcal{T}-int(A^i) \subseteq \mathcal{T}-int(A) \overset{A^i \in\mathcal{T}}{\Rightarrow} A^i \subseteq \mathcal{T}-int(A)$\\
+$\mathcal{T}-int(A)\subseteq A \Rightarrow \left(\mathcal{T}-int(A)\right)^i \subseteq A^i \overset{\mathcal{T}-int(A) \in\mathcal{T}}{\Longrightarrow} \mathcal{T}-int(A) \subseteq A^i$\\
+
+$\Rightarrow \mathcal{T}-int(A) = A^i \Rightarrow \mathcal{T}-int = i$
+
+
+\end{proof}
+
+\md
+{
+\quad Let $\mathcal{I} = \{i: \mathcal{P}(X) \to \mathcal{P}(X) \;|\; i \text{ is a closure operator } \}$ be the set of all interior operators, \[ \mathcal{IN}: \mathcal{I} \to Top(X),\: i \overset{\mathcal{IN}}{\longrightarrow} \mathcal{T}^i \] the operator assigning to each interior operator the generated topology, and \[ \mathcal{T}-int: \mathcal{P}(X) \to \mathcal{P}(X), \: A \overset{\mathcal{T}-int}{\longrightarrow} A^{0^{\mathcal{T}}}\] for each $\mathcal{T} \in Top(X).$
+}
+
+\mth
+{
+\quad $\mathcal{IN}$ is a bijective operator and \[\mathcal{IN}^{-1}: Top(X)\to \mathcal{I}, \: \mathcal{T} \overset{\mathcal{IN}^{-1}}{\longrightarrow} \mathcal{T}-int\]
+}
+
+
+\begin{proof}
+Firstly we show that $\mathcal{IN}^{-1}$ is well defined.\\
+Let $\mathcal{T}\in Top(X)$, then we have:
+\begin{flalign*}
+\qquad\left(IO1\right)\quad & X^{0^\mathcal{T}} = X &\\
+\qquad\left(IO2\right)\quad & \forall A, A^{0^\mathcal{T}} = \displaystyle\bigcup\{G \subseteq X \;|\; G\subseteq A,\, G \text{ is  } \mathcal{T}\text{ - open}\}  \Rightarrow  A^{0^\mathcal{T}} \subseteq A &\\
+\qquad\left(IO3\right)\quad & \forall A,  \left(A^{0^\mathcal{T}}\right)^{0^\mathcal{T}} = A^{0^\mathcal{T}} &
+\end{flalign*}
+$(IO4)$ Let $A,B\subseteq X: \displaystyle A\bigcap B \subseteq A $ and $A\bigcap B \subseteq B \Rightarrow \left(A\bigcap B\right)^{0^\mathcal{T}} \subseteq A^{0^\mathcal{T}}$ and $\left(A\bigcap B\right)^{0^\mathcal{T}} \subseteq B^{0^\mathcal{T}} \Rightarrow \left(A\bigcap B\right)^{0^\mathcal{T}} \subseteq A^{0^\mathcal{T}} \bigcap B^{0^\mathcal{T}}$\\
+$A^{0^\mathcal{T}} \subseteq A$ and $B^{0^\mathcal{T}} \subseteq B \Rightarrow \displaystyle \underbrace{A^{0^\mathcal{T}} \bigcap B^{0^\mathcal{T}}}_{\mathcal{T}-open} \subseteq A \bigcap B \\ \Rightarrow A^{0^\mathcal{T}} \bigcap B^{0^\mathcal{T}} \subseteq \left(A\bigcap B\right)^{0^\mathcal{T}} \Rightarrow \left(A\bigcap B\right)^{0^\mathcal{T}} = A^{0^\mathcal{T}} \bigcap B^{0^\mathcal{T}}$\\
+$\Rightarrow \mathcal{T}-int$ is an interior operator, $i.e. \; \mathcal{T}-int \in \mathcal{I}$.\\
+
+Let $i\in \mathcal{I}$ be an interior operator, then $\mathcal{IN}(i) = \mathcal{T}^i$. Suppose there exists another topology $\mathcal{T} \in Top(X)$ such that $\mathcal{IN}(i) = \mathcal{T} \Rightarrow \mathcal{T}-int = i$. Now let $A \subseteq X$ be any set, then the following holds:\\
+$A\in \mathcal{T} \Leftrightarrow A = \mathcal{T}-int(A) \overset{\mathcal{T}-int = i}{\Leftrightarrow} A = A^i \Leftrightarrow A \in \mathcal{T}^i \Rightarrow \mathcal{T} = \mathcal{T}^i$
+\begin{center}
+($\mathcal{IN}$ is injective)
+\end{center}
+
+Let $\mathcal{T} \in Top(X) \Rightarrow \mathcal{T}-int \in \mathcal{I} \Rightarrow \exists\; \overline{\mathcal{T}} \in Top(X)$ : $\mathcal{IN}(\mathcal{T}-int) = \overline{\mathcal{T}} \\ \Rightarrow \overline{\mathcal{T}}-int = \mathcal{T}-int \Rightarrow \overline{\mathcal{T}} = \mathcal{T}$. So for each $\mathcal{T} \in Top(X) \;(\exists)\; i:= \mathcal{T}-int \in \mathcal{I}$ such that $\mathcal{IN}(i) = \mathcal{T}$
+\begin{center}
+($\mathcal{IN}$ is onto)
+\end{center}
+
+$\Rightarrow \mathcal{IN}$ is a bijective operator.
+\end{proof}
+\end{document}
