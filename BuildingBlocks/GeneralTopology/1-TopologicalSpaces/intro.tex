@@ -1,0 +1,102 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage{xcolor}
+\usepackage{import}
+\usepackage{C:/ForSaving/Math/Licenta/content/HouseOfCommons/usefull_constructs}
+\imagePaths{C:/ForSaving/Math/Licenta/content/BuildingBlocks/GeneralTopology/1-TopologicalSpaces/images/}
+
+\definecolor{leg}{HTML}{FFF47B}
+
+
+\begin{document}
+\myPage{1}{March}{What is a topology?}{17}{C:/ForSaving/Math/Licenta/content/BuildingBlocks/GeneralTopology/1-TopologicalSpaces/images/icon}
+\pagecolor{leg}
+
+\begin{center}
+\tcbox[on line,width=8cm,valign=center,drop lifted shadow,enhanced,boxrule=1mm,arc = 2mm,height=2cm]
+{
+\textbf{What are we trying to do?}
+}
+\end{center}
+\vfill
+
+For the usual reader the notions of \emph{open} and \emph{closed} intervals must be familiar from the study of the real numbers within various subjects. This \emph{"Topology"} thing is taking these concepts (also many others) and abstracting them to the purpose of applying some of the results to different kind of sets. \par 
+Defining a \emph{"Topology"} for a set is (in some sense) like defining an algebraic structure, in the same way we use the algebraic structures for investigating properties of sets, we use topological structures for that same output.
+\vfill
+\newpage
+\mtd{What does \textit{"Topology"} mean?}
+{
+Let $X$ be a set and $\mathcal{T} \subseteq \mathcal{P}\left(X\right)$ a family of subsets of $X$. If $\mathcal{T}$ meets the following requirements:
+\begin{flalign*}
+\qquad\left(T1\right)\quad & X \text{ and } \emptyset \text{ are contained in } \mathcal{T} \left(i.e.\: X, \emptyset \in \mathcal{T}\right)&\\
+\qquad\left(T2\right)\quad & \text{for every family }\mathcal{G} = \left(G_i\right)_{i \in I} \subseteq \mathcal{T}: \bigcup\mathcal{G} = \bigcup_{i\in I} G_i \in \mathcal{T}&\\
+\qquad\left(T3\right)\quad & \text{for every } n \in \mathbb{N} \text{ and } G_1,G_2,\dots ,G_n\in \mathcal{T}: \bigcap_{i = 1}^{n} G_i \in\mathcal{T}%
+\end{flalign*}
+then $\mathcal{T}$ is a \emph{topology} on the set X and the ordered pair $\left(X, \mathcal{T}\right)$ is  a \emph{topological space}.
+}
+
+Let $\left(X,\mathcal{T}\right)$ be a topological space and $G, F\subseteq X$. We say that $G$ is \emph{open} if $G\in\mathcal{T}$ and F is  \emph{closed} if $\mathit{C}_{\left(F\right)} = X \setminus F \in\mathcal{T}$.
+
+\mr
+{
+The condition $\left(T3\right)$ is equivalent to:
+\begin{flalign*}
+\qquad\left(T3'\right)\quad & \text{for every } G_1, G_2 \in \mathcal{T}: G_1\bigcap G_2 \in\mathcal{T}&
+\end{flalign*}
+}
+\vspace*{-3mm}
+\begin{proof}
+\tcbox[on line,size=fbox]{$\Rightarrow$}
+
+Results by applying $\left(T3\right)$ for $n = 2$.
+\end{proof}
+
+\begin{proof}
+\tcbox[on line,size=fbox]{$\Leftarrow$}
+
+Let $p\left(k\right): "\forall\; G_1, G_2, \dots, G_k \in \mathcal{T}: \displaystyle\bigcap_{i = 1}^{k} G_k"$, for $k \in\mathbb{N}$. \\
+By $\left(T3'\right)$ we know that $p\left(1\right)\left[\text{take } G_1 = G_2\right]$ and $p(2)$ are true. Let $k \in\mathbb{N}_{\geq 2}$ such that $p(k)$ is true and $G_1,G_2, \dots, G_k, G_{k+1} \in \mathcal{T}$.
+\begin{align*}
+\bigcap_{i = 1}^{k + 1} G_i  & = \left(G_1 \cap G_2 \cap \dots \cap G_k\right) \cap G_{k+1}  = \overbrace{\underbrace{\left(\bigcap_{i=1}^k G_i\right)}_{\in\mathcal{T}\text{ by p(k)}} \bigcap G_{k + 1}}^{\in\mathcal{T} \text{ by p(2)}}&\\
+\end{align*}
+$\Rightarrow p(k + 1)$ is true.\\
+By induction, it means that $p(k)$ is true for every $k \in\mathbb{N}_{\geq 2}$.\\
+\end{proof}
+
+
+\mr
+{
+By $\left(T2\right)$ and $\left(T3\right)$ from the definition of a topology we say that topologies are closed under arbitrary reunions and finite intersections.
+}
+
+\me
+{
+The \emph{usual} (\emph{natural} or \emph{standard}) topology on $\mathbb{R}$:
+\[\mathcal{T}_0 = \mset{\bigcup_{i\in I}\left(a_i, b_i\right)}{I \text{ arbitrary }, a_i < b_i \forall i \in I} \]
+}
+
+\begin{proof}
+We must verify the conditions $(T1)- (T3)$.
+\begin{flalign*}
+\qquad\left(T1\right)\quad & I = \emptyset \Rightarrow \emptyset \in \mathcal{T}_0 \text{ and }\mathbb{R} = \bigcup_{n \in \mathbb{N}} \left(-n, n\right)\in\mathcal{T}_0 &\\
+\qquad\left(T2\right)\quad & \te{Let } \left(G_j\right)_{j\in J} \subseteq \mathcal{T}_0 \Rightarrow  \forall j \in J \, (\exists) \, I_j \te{ such that } G_j = \bigcup_{i \in I_j}\left(a_{i_j}, b_{i_j}\right) &\\
+&\Rightarrow \bigcup_{j\in J} G_j = \bigcup_{j\in J}\left(\bigcup_{i \in I_j} \left(a_{i_j}, b_{i_j}\right)\right) = \bigcup_{(i, j) \in \bigcup_{j \in J} I_j\times J} \left(a_{i_j}, b_{i_j}\right) \in \mathcal{T}_0  &\\
+\qquad\left(T3'\right)\quad & \te{Let } G_1 = \bigcup_{i\in I} \left(a_i, b_i\right) \te{ and } G_2 = \bigcup_{j \in J} \left(c_j, d_j\right) \in \mathcal{T}_0.&\\
+& G_1 \bigcap G_2 = \left(\bigcup_{i\in I} \left(a_i, b_i\right)\right) \bigcap \left(\bigcup_{j\in J} \left(c_j, d_j\right)\right) = \bigcup_{(i, j) \in I\times J} \left(\left(a_i, b_i\right) \bigcap \left(c_j, d_j\right)\right)  &\\
+&  = \bigcup_{(i, j) \in I\times J} \left(\max\{a_i, c_j\}, \min\{b_i, d_j\}\right) \in \mathcal{T}_0 &\\
+& \te{ using the convention that if } a \geq b \te{ then } \left(a, b\right) = \emptyset.
+\end{flalign*}
+\end{proof}
+
+\mr
+{
+Let $\left(X,\mathcal{T}\right)$ be a topological space then, using \emph{de Morgan Laws}, the set $\mathcal{F}$ of all closed sets satisfy:
+\begin{flalign*}
+\qquad\left(F1\right)\quad & X \text{ and } \emptyset \text{ are contained in } \mathcal{F} \left(i.e.\: X, \emptyset \in \mathcal{F}\right)&\\
+\qquad\left(F2\right)\quad & \text{for every family }\mathcal{H} = \left(H_i\right)_{i \in I} \subseteq \mathcal{F}: \bigcup\mathcal{H} = \bigcup_{i\in I} H_i \in \mathcal{F}&\\
+\qquad\left(F3\right)\quad & \text{for every } n \in \mathbb{N} \text{ and } F_1,F_2,\dots ,F_n\in \mathcal{F}: \bigcap_{i = 1}^{n} F_i \in\mathcal{T}%
+\end{flalign*}
+}
+
+
+
+\end{document}
