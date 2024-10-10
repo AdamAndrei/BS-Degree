@@ -110,9 +110,14 @@ $\left(NF4\right)$
 \end{center}
 
 Let $V_1,V_2 \in \nbh{x} \Rightarrow \fe{\exists} U_1,U_2 \in \nbhb{x}: U_1 \subseteq V_1 \;\land \; U_2\subseteq V_2 \\ \Rightarrow U_1\bigcap U_2\subseteq V_1\bigcap V_2.$ By $\left(NBF3\right) \fe{\exists} U\in\nbhb{x}: U\subseteq U_1\bigcap U_2 \Rightarrow \\ \Rightarrow \fe{\exists} U \in\nbhb{x}: U\subseteq V_1\bigcap V_2 \Rightarrow V_1\bigcap V_2 \in\nbh{x}.$\\
-Using induction, now we have that $\fe{\forall} n\in\mathbb{N} \fe{\forall} V_1,V_2,\dots ,V_n \in \nbh{x}:  $
+Using induction, now we have that $$\fe{\forall} n\in\mathbb{N} \fe{\forall} V_1,V_2,\dots ,V_n \in \nbh{x}: \displaystyle\bigcap_{i = 1}^n V_i \in \mathcal{V}(x) $$
+
+\begin{center}
+$\left(NF5\right)$
+\end{center}
+
+Let $V \in \nbh{x} \Rightarrow \fe{\exists} U\in \nbhb{x}: U \subseteq V.$ By $(HBF4)$ we have that there is a $U' \in \nbhb{x} s.t. \fe{\forall} y\in U': \fe{\exists} U'' \in \nbhb{y}: U''\subseteq U.$ Taking $V' := U'\in\nbh{x}$ and replacing $U''\in\nbhb{y}: U''\subseteq U$ with $U\in\nbh{y}$ we have that $\fe{\exists} V' \in\nbh{x}: \;s.t.\; \fe{\forall} y\in V': V\in\nbh{y}$.
 
 \end{proof}
-
 
 \end{document}
